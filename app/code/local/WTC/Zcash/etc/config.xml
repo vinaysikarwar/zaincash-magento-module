@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   WTC
+ * @package    WTC_Zcash
+ * @copyright  Copyright (c) 2014-2016 Web Technology Codes.
+ * @author     Vinay Sikarwar <shop@webtechnologycodes.com>
+ */
+-->
+<config>
+  <modules>
+    <WTC_Zcash>
+      <version>0.1.0</version>
+    </WTC_Zcash>
+  </modules>
+  <frontend>
+        <secure_url>
+            <zcash_standard>/zcash/standard</zcash_standard>
+        </secure_url>
+        <routers>
+            <zcash>
+                <use>standard</use>
+                <args>
+                    <module>WTC_Zcash</module>
+                    <frontName>zcash</frontName>
+                </args>
+            </zcash>
+        </routers>
+        <layout>
+            <updates>
+                <zcash>
+                    <file>zcash.xml</file>
+                </zcash>
+            </updates>
+        </layout>
+    </frontend>
+  <global>
+    <helpers>
+      <zcash>
+        <class>WTC_Zcash_Helper</class>
+      </zcash>
+    </helpers>
+	<blocks>
+	  <zcash>
+		<class>WTC_Zcash_Block</class>
+	  </zcash>
+	</blocks>
+	<models>
+	  <zcash>
+		<class>WTC_Zcash_Model</class>
+		<resourceModel>zcash_mysql4</resourceModel>
+	  </zcash>
+	</models>
+	<resources>
+	  <zcash_setup>
+		<setup>
+		  <module>WTC_Zcash</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </zcash_setup>
+	  <zcash_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </zcash_write>
+	  <zcash_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </zcash_read>
+	</resources>
+  </global>
+    <default>
+        <payment>
+            <zcash_standard>
+                  <model>zcash/standard</model>
+                  <title>zcash Standard</title>
+                  <allowspecific>0</allowspecific>
+                  <transaction_type>O</transaction_type>
+            </zcash_standard>
+        </payment>
+    </default>
+</config> 
